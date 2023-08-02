@@ -1,0 +1,7 @@
+# Builds
+.gradle
+build
+run
+
+# IDE
+.idea
