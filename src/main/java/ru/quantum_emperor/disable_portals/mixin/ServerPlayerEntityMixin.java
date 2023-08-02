@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import paulevs.edenring.EdenRing;
 import ru.quantum_emperor.disable_portals.config.Settings;
 
 import javax.swing.text.html.parser.Entity;
@@ -18,6 +19,8 @@ public class ServerPlayerEntityMixin {
         if (Settings.getInstance().isDisableEnd() && world.getRegistryKey() == World.END)
             cir.setReturnValue(null);
         if (Settings.getInstance().isDisabledNether() && world.getRegistryKey() == World.NETHER)
+            cir.setReturnValue(null);
+        if (Settings.getInstance().isDisableEden() && world.getRegistryKey() == EdenRing.EDEN_RING_KEY)
             cir.setReturnValue(null);
     }
 }

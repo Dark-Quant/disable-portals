@@ -4,6 +4,7 @@ public class Settings {
     private static final Settings instance = new Settings();
     private boolean isDisabledNether = true;
     private boolean isDisableEnd = true;
+    private boolean isDisableEden = true;
     private Settings() {
 
     }
@@ -26,5 +27,13 @@ public class Settings {
 
     public void setDisableEnd(boolean disableEnd) {
         isDisableEnd = disableEnd;
+    }
+
+    public boolean isDisableEden() {
+        return isDisableEden;
+    }
+
+    public void setDisableEden(boolean disableEden) {
+        isDisableEden = disableEden;
     }
 }

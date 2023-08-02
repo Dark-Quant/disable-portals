@@ -23,8 +23,7 @@ dependencies {
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "com.github.quiqueck:BCLib:2.1.6"
-	modImplementation "com.github.paulevsGitch:EdenRing:0.6.4"
-
+	modImplementation "curse.maven:eden-ring-546590:3946862-sources-3946862"
 }
 
 base {

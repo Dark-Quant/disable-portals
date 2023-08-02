@@ -4,12 +4,12 @@
   "package": "ru.quantum_emperor.disable_portals.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "EdenPortalMixin",
     "EndPortalMixin",
     "NetherPortalMixin",
     "ServerPlayerEntityMixin"
   ],
   "client": [
-    "ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1

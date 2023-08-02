@@ -7,6 +7,11 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
         maven { url 'https://jitpack.io' }
-
+        maven {
+            url "https://cursemaven.com"
+            content {
+                includeGroup "curse.maven"
+            }
+        }
     }
 }
