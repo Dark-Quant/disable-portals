@@ -32,7 +32,7 @@ public class PortalActivationEvent implements UseBlockCallback {
 
     @Override
     public ActionResult interact(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
-        if (!Settings.getInstance().isDisabledNether())
+        if (!Settings.isDisabledNether())
             return ActionResult.SUCCESS;
         if (world.isClient)
             return ActionResult.PASS;

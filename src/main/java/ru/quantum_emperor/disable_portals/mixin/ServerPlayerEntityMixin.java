@@ -16,11 +16,11 @@ import javax.swing.text.html.parser.Entity;
 public class ServerPlayerEntityMixin {
     @Inject(method = "moveToWorld", at = @At("HEAD"), cancellable = true)
     private void cancelMoveToWorld(ServerWorld world, CallbackInfoReturnable<Entity> cir) {
-        if (Settings.getInstance().isDisableEnd() && world.getRegistryKey() == World.END)
+        if (Settings.isDisableEnd() && world.getRegistryKey() == World.END)
             cir.setReturnValue(null);
-        if (Settings.getInstance().isDisabledNether() && world.getRegistryKey() == World.NETHER)
+        if (Settings.isDisabledNether() && world.getRegistryKey() == World.NETHER)
             cir.setReturnValue(null);
-        if (Settings.getInstance().isDisableEden() && world.getRegistryKey() == EdenRing.EDEN_RING_KEY)
+        if (Settings.isDisableEden() && world.getRegistryKey() == EdenRing.EDEN_RING_KEY)
             cir.setReturnValue(null);
     }
 }

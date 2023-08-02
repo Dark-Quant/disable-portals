@@ -22,7 +22,7 @@ public class NetherPortalMixin {
 
     @Redirect(method = "onBlockAdded", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/dimension/AreaHelper;getNewPortal(Lnet/minecraft/world/WorldAccess;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/math/Direction$Axis;)Ljava/util/Optional;"))
     private Optional<AreaHelper> closePortal(WorldAccess world, BlockPos pos, Direction.Axis axis) {
-        if (Settings.getInstance().isDisabledNether()) {
+        if (Settings.isDisabledNether()) {
             return Optional.empty();
         } else {
             return AreaHelper.getNewPortal(world, pos, axis);

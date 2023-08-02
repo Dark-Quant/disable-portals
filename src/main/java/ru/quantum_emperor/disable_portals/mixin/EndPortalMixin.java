@@ -13,8 +13,8 @@ import ru.quantum_emperor.disable_portals.config.Settings;
 public class EndPortalMixin {
     @Inject(method = "useOnBlock", cancellable = true, at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;with(Lnet/minecraft/state/property/Property;Ljava/lang/Comparable;)Ljava/lang/Object;"))
     private void closePortal(ItemUsageContext context, CallbackInfoReturnable<ActionResult> cir) {
-        if (Settings.getInstance().isDisableEnd()) {
-            cir.setReturnValue(ActionResult.SUCCESS);
+        if (Settings.isDisableEnd()) {
+            cir.setReturnValue(ActionResult.success(context.getWorld().isClient()));
             cir.cancel();
         }
     }

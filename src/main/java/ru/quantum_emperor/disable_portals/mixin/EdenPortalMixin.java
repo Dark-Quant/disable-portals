@@ -13,7 +13,7 @@ import ru.quantum_emperor.disable_portals.config.Settings;
 public class EdenPortalMixin {
     @Inject(method = "checkNewPortal", at = @At("HEAD"), cancellable = true)
     private static void closeEdenPortal(World world, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        if (Settings.getInstance().isDisableEden()) {
+        if (Settings.isDisableEden()) {
             cir.setReturnValue(false);
         }
     }

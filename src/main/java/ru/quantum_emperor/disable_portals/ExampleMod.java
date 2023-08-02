@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.quantum_emperor.disable_portals.config.Settings;
 import ru.quantum_emperor.disable_portals.events.PortalActivationEvent;
 
 public class ExampleMod implements ModInitializer {
@@ -14,6 +15,6 @@ public class ExampleMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		UseBlockCallback.EVENT.register(new PortalActivationEvent());
-		LOGGER.info("Hello Fabric world!");
+		Settings.register();
 	}
 }

@@ -13,10 +13,8 @@
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "MIT",
 
-  "environment": "*",
   "entrypoints": {
     "main": [
       "ru.quantum_emperor.disable_portals.ExampleMod"
@@ -31,10 +29,12 @@
     "fabric-api": "*",
     "minecraft": "~1.19.2",
     "java": ">=17",
-    "bclib": "2.0.7"
+    "bclib": "2.1.x",
+    "edenring": "0.6.x"
   },
   "breaks": {
-    "bclib": "<2.0.6"
+    "bclib": "<2.1.0",
+    "edenring": "<0.6.4"
   },
   "suggests": {
     "another-mod": "*"
