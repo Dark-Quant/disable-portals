@@ -3,21 +3,20 @@
   "id": "disable_portals",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "No more dimensions",
+  "description": "This mod \"disable\" dimensions!",
   "authors": [
-    "Me!"
+    "QuantumEmperor"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/Dark-Quant/disable-portals"
   },
 
   "license": "MIT",
 
   "entrypoints": {
     "main": [
-      "ru.quantum_emperor.disable_portals.ExampleMod"
+      "ru.quantum_emperor.disable_portals.DisablePortalsMod"
     ]
   },
   "mixins": [
@@ -35,8 +34,5 @@
   "breaks": {
     "bclib": "<2.1.0",
     "edenring": "<0.6.4"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }

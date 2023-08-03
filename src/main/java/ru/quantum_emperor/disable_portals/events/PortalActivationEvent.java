@@ -20,9 +20,8 @@ import net.minecraft.world.dimension.AreaHelper;
 import net.minecraft.world.explosion.Explosion;
 import paulevs.edenring.EdenRing;
 import paulevs.edenring.world.EdenPortal;
-import ru.quantum_emperor.disable_portals.config.Settings;
+import ru.quantum_emperor.disable_portals.config.DisablePortalConfig;
 
-import javax.swing.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,13 +35,13 @@ public class PortalActivationEvent implements UseBlockCallback {
 
     @Override
     public ActionResult interact(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
-        if (Settings.isDisabledNether()) {
+        if (DisablePortalConfig.isDisabledNether()) {
             ActionResult result = disableNether(player, world, hand, hitResult);
             if (result != ActionResult.PASS)
                 return result;
         }
 
-        if (Settings.isDisableEden()) {
+        if (DisablePortalConfig.isDisableEden()) {
             ActionResult result = disableEden(player, world, hand, hitResult);
             if (result != ActionResult.PASS)
                 return result;
@@ -58,7 +57,7 @@ public class PortalActivationEvent implements UseBlockCallback {
         if (correctDimension && isIgnitingItem
                 && level.getBlockState(pos).isOf(Blocks.GOLD_BLOCK) && EdenPortal.checkNewPortal(level, pos.up())) {
             level.createExplosion(null, (double) pos.getX() + 0.5, (double) pos.getY() + 1.5, (double) pos.getZ() + 0.5, 2.0f, false, Explosion.DestructionType.NONE);
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS, Settings.getDarknessDuration()));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS, DisablePortalConfig.getDarknessDuration()));
             player.sendMessage(Text.translatable("disable_portal.cancel_activation", "§b§leden"));
             return ActionResult.SUCCESS;
         }
@@ -76,7 +75,7 @@ public class PortalActivationEvent implements UseBlockCallback {
         if (igniting.contains(itemStack.getItem()) && canPlaced && canActivated
                 && AreaHelper.getNewPortal(world, pos2, Direction.Axis.X).isPresent()) {
             world.createExplosion(null, (double) pos2.getX() + 0.5, (double) pos2.getY() + 0.5, (double) pos2.getZ() + 0.5, 2.0f, false, Explosion.DestructionType.NONE);
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS, Settings.getDarknessDuration()));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS, DisablePortalConfig.getDarknessDuration()));
             player.sendMessage(Text.translatable("disable_portal.cancel_activation", "§4§lnether"));
             return ActionResult.SUCCESS;
         }

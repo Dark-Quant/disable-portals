@@ -1,24 +1,26 @@
 package ru.quantum_emperor.disable_portals.config;
 
 import net.fabricmc.loader.api.FabricLoader;
-import org.spongepowered.asm.mixin.transformer.Config;
-import ru.quantum_emperor.disable_portals.ExampleMod;
+import ru.quantum_emperor.disable_portals.DisablePortalsMod;
 
 import java.io.*;
 import java.util.Properties;
 
-public class Settings {
+public class DisablePortalConfig {
     private static boolean isDisabledNether = true;
     private static boolean isDisabledEnd = true;
     private static boolean isDisabledEden = true;
     private static int darknessDuration = 100;
-    private Settings() {
+
+    private DisablePortalConfig() {
 
     }
+
     public static void register() {
         File configFile = new File(FabricLoader.getInstance().getConfigDir().toFile(), "disable_portals.properties");
         loadConfig(configFile);
     }
+
     public static void saveConfig(File file) {
         try (FileWriter writer = new FileWriter(file)) {
             writer.write("isDisabledNether=true\n");
@@ -26,7 +28,7 @@ public class Settings {
             writer.write("isDisabledEden=true\n");
             writer.write("darknessDuration=100\n");
         } catch (IOException e) {
-            ExampleMod.LOGGER.warn("Failed to write data to configuration file");
+            DisablePortalsMod.LOGGER.warn("Failed to write data to configuration file");
         }
     }
 
@@ -45,9 +47,9 @@ public class Settings {
             darknessDuration = Integer.parseInt(properties.getProperty("darknessDuration"));
             reader.close();
         } catch (FileNotFoundException e) {
-            ExampleMod.LOGGER.warn("Configuration file not found");
+            DisablePortalsMod.LOGGER.warn("Configuration file not found");
         } catch (IOException | NumberFormatException e) {
-            ExampleMod.LOGGER.warn("Unable to read configuration file contents", e);
+            DisablePortalsMod.LOGGER.warn("Unable to read configuration file contents", e);
         }
     }
 
