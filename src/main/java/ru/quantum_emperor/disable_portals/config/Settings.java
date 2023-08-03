@@ -11,6 +11,7 @@ public class Settings {
     private static boolean isDisabledNether = true;
     private static boolean isDisabledEnd = true;
     private static boolean isDisabledEden = true;
+    private static int darknessDuration = 100;
     private Settings() {
 
     }
@@ -23,6 +24,7 @@ public class Settings {
             writer.write("isDisabledNether=true\n");
             writer.write("isDisabledEnd=true\n");
             writer.write("isDisabledEden=true\n");
+            writer.write("darknessDuration=100\n");
         } catch (IOException e) {
             ExampleMod.LOGGER.warn("Failed to write data to configuration file");
         }
@@ -40,11 +42,12 @@ public class Settings {
             isDisabledEden = Boolean.parseBoolean(properties.getProperty("isDisabledEden"));
             isDisabledEnd = Boolean.parseBoolean(properties.getProperty("isDisabledEnd"));
             isDisabledNether = Boolean.parseBoolean(properties.getProperty("isDisabledNether"));
+            darknessDuration = Integer.parseInt(properties.getProperty("darknessDuration"));
             reader.close();
         } catch (FileNotFoundException e) {
             ExampleMod.LOGGER.warn("Configuration file not found");
-        } catch (IOException e) {
-            ExampleMod.LOGGER.warn("Unable to read configuration file contents");
+        } catch (IOException | NumberFormatException e) {
+            ExampleMod.LOGGER.warn("Unable to read configuration file contents", e);
         }
     }
 
@@ -58,5 +61,9 @@ public class Settings {
 
     public static boolean isDisableEden() {
         return isDisabledEden;
+    }
+
+    public static int getDarknessDuration() {
+        return darknessDuration;
     }
 }
